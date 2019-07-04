@@ -1,0 +1,40 @@
+﻿@using nt.Client.NftComponents;
+@using nt.Client.NftComponents.Contracts;
+
+    <div id="CreateNewNftFormContainer" class="container-fluid justify-content-around row align-items-center pt-3">
+
+
+        <label for="NewNftTemplateName">NFT Template Name: </label>
+        <Input id="NewNftTemplateName" @bind="NewNftTemplateName" />
+
+        <label for="NewNftTemplateSymbol">NFT Template Symbol: </label>
+        <Input id="NewNftTemplateSymbol" @bind="NewNftTemplateSymbol" />
+
+        <label for="NewNftTemplateMintLimit">NFT Template Symbol: </label>
+        <Input id="NewNftTemplateMintLimit" @bind="NewNftTemplateMintLimit" />
+
+        <label for="NewNftTemplateAttachedTokens">NFT Template Attached Token Amount: </label>
+        <Input id="NewNftTemplateAttachedTokens" @bind="NewNftTemplateAttachedTokens" />
+
+    </div>
+
+@code {
+
+    string NewNftTemplateName { get; set; } 
+
+    string NewNftTemplateSymbol { get; set; }
+
+    int NewNftTemplateMintLimit { get; set; }
+
+    int NewNftTemplateAttachedTokens { get; set; }
+
+private async Task AddNewNft()
+{
+    Console.WriteLine("trying to add NFT template");
+
+
+
+
+}
+
+}

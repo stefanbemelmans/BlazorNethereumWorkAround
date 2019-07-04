@@ -1,0 +1,62 @@
+﻿@page "/AssetNft"
+@layout AssetNftLayout;
+@inject IJSRuntime JsRuntime;
+
+    @*<NavLink class="nav-link" href="/">
+        <span class="oi oi-home" aria-hidden="true"></span>Home
+    </NavLink>*@
+    <div id="HercBalanceContainer" class="justify-content-center py-2 row">
+        <div class="col">
+            <div class="justify-content-center align-item-center mb-1 row">
+                <div id="HercBalance" class="text-center py-2 w-50">
+                    <h5 class="text-light mb-3">Your Balance</h5>
+
+                    <div class="justify-content-center row">
+                        <div class="text-right text-light">
+                            <h3 class="mb-0 font-weight-bold"> @HercBalance </h3>
+                            <p class="font-weight-bold">HERC</p>
+                        </div>
+                        <div class="text-left ml-3">
+                            <img class="m-1" src="/Assets/herc.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="YourAddressContainer" class="pl-2 w-50 mx-auto">
+        Your Address
+        <div id="YourAddress" class="text-left m-2 p-3">
+            @Address
+        </div>
+        <button type="button" class="btn btn-primary" @onclick="@GetAddress">
+            GetAddress
+        </button>
+
+    </div>
+    <div id="PurchaseHercButtonContainer" class="w-25 mx-auto">
+        <h2>Purchase Herc Tokens</h2>
+    </div>
+    <div id="CertificateListContainer" class="h-50 bg-light text-dark text-center">
+        <h1>No Certificates</h1>
+
+        yet
+    </div>
+
+
+
+
+@code {
+    int HercBalance = 300;
+
+    string Address;
+
+
+    private async void GetAddress()
+    {
+         Address = await JsRuntime.InvokeAsync<string>("getAddress");
+
+        StateHasChanged();
+    }
+
+}

@@ -1,0 +1,40 @@
+﻿@page "/NewCert"
+@layout AssetNftLayout;
+@using nt.Client.NftComponents;
+@using nt.Client.NftComponents.Contracts;
+
+@inject IJSRuntime JsRuntime;
+
+
+<div id="NewCertPage" class="justify-content-center py-2 row">
+
+    <h1>NFT Form Will Be Here</h1>
+    <CreateNewNftForm />
+</div>
+
+@*<button type="button" class="btn btn-primary" @onclick="@CreateNft">
+    Create New NFT
+</button>*@
+
+
+
+@code {
+
+
+
+public void MintNft()
+{
+Console.WriteLine("Create The NFT");
+
+}
+public void AddNft()
+{
+
+    Console.WriteLine("Create The NFT");
+
+}
+
+
+}
+
+

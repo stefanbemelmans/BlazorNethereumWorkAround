@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>nt</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/assetNft.css" rel="stylesheet" />
+</head>
+<body>
+    <app>Loading...</app>
+    <script>
+        var provider;
+        var address;
+        var userLogin = async() => {
+            const accounts = await provider.enable();
+            console.log(accounts[0]);
+            address = accounts[0];
+        }
+
+        if (typeof window.ethereum !== 'undefined'
+            || (typeof window.web3 !== 'undefined')) {
+
+            // Web3 browser user detected. You can now use the provider.
+            provider = window['ethereum'] || window.web3.currentProvider
+            console.log("web3", provider)
+            this.userLogin();
+        }
+        else {
+            console.log("nothing web3");
+        }
+
+        window.getAddress = () => {
+            console.log("getAddressfrom Index page Script")
+            if (address != null) {
+                console.log(address);
+                return address
+            }
+            else {
+                console.log("noaddress");
+            }
+        };
+
+
+    </script>
+    <script src="_framework/blazor.webassembly.js"></script>
+
+</body>
+</html>
