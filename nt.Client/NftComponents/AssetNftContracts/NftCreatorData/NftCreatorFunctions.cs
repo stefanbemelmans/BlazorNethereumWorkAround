@@ -9,6 +9,19 @@ namespace nt.Client.NftComponents.Contracts
 {   // [Function("name", "return type")]
     // [Parameter("type", "paramName", order)]
 
+    [Function ("totalNFTs", "uint")]
+    public class GetTotalNftTypesFunction : FunctionMessage
+    {
+
+    }
+
+    [FunctionOutput]
+    public class GetTotalNftTypesFunctionOutputDTO : IFunctionOutputDTO
+    {
+        [Parameter("uint", "totalNFTs", 1)]
+        public int TotalNftTypes { get; set; }
+    }
+
     [Function("getNFTData")]
     public class GetNftByIdFunction : FunctionMessage
     {
@@ -33,6 +46,7 @@ namespace nt.Client.NftComponents.Contracts
 
     }
 
+    // Create a new NFT Template 
     [Function("AddNewNft")]
     public class AddNewNftTemplateFunction : FunctionMessage
     {
@@ -52,6 +66,8 @@ namespace nt.Client.NftComponents.Contracts
     }
 
     [Function("mintNFT")]
+    // Mints the selected NFT template
+    // Triggers Herc1155 Transfer Single Event
     public class MintNftFunction : FunctionMessage 
     {
         [Parameter("uint", "_type", 1)]

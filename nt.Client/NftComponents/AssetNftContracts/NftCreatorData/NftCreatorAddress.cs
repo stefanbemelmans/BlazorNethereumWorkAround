@@ -3,8 +3,8 @@
     public class NftCreator
     {
 
-        public string MyRopstenAddresss = "0x3393b382f834be5F01095197CBDb0dbe66573222";
+        public static string NftCreatorRopstenAddress= "0x414bABeEc0a0Faa22D9FdbfaE461ace4c632a020";
 
-        public object Abi { get => Abi; set => Abi = NftCreatorAbi.Abi; }
+        public static string Abi = NftCreatorAbi.Abi; 
     }
 }
