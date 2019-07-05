@@ -1,5 +1,7 @@
 ﻿@using nt.Client.NftComponents;
 @using nt.Client.NftComponents.Contracts;
+@using Nethereum.Web3;
+@using Nethereum.Web3.Accounts;
 
     <div id="CreateNewNftFormContainer" class="container-fluid justify-content-around row align-items-center pt-3">
 
@@ -32,7 +34,11 @@ private async Task AddNewNft()
 {
     Console.WriteLine("trying to add NFT template");
 
+    var url = RopstenWeb3.RopstenEndpoint;
 
+    var privateKey = RopstenWeb3.TestRopstenPrivateKey;
+    var account = new Account(privateKey);
+    var web3 = new Web3(account, url);
 
 
 }
