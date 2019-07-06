@@ -81,7 +81,7 @@ public async Task GetTotalNftTypes()
 
     var TotalNftsFunction = NftCreatorContract.GetFunction("totalNFTs");
 
-    Console.WriteLine(TotalNftsFunction.);
+    Console.WriteLine(TotalNftsFunction);
 
     TotalNfts = await TotalNftsFunction.CallAsync<int>();
 
