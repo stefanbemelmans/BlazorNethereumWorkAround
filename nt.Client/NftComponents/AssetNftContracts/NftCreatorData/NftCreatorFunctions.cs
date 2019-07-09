@@ -3,6 +3,7 @@ using Nethereum.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 
 namespace nt.Client.NftComponents.Contracts
@@ -47,7 +48,7 @@ namespace nt.Client.NftComponents.Contracts
     }
 
     // Create a new NFT Template 
-    [Function("AddNewNft")]
+    [Function("AddNFTTemplates")]
     public class AddNewNftTemplateFunction : FunctionMessage
     {
         [Parameter("string", "_name", 1)]
@@ -57,11 +58,11 @@ namespace nt.Client.NftComponents.Contracts
         public string NewNftTemplateSymbol { get; set; }
 
         [Parameter("uint", "_mintlimit", 3)]
-        public int NewNftTemplateMintLimit { get; set; }
+        public BigInteger NewNftTemplateMintLimit { get; set; }
 
         [Parameter("uint", "_attachedtokens", 4)]
 
-        public int NewNftTemplateAttachedTokens { get; set; }
+        public BigInteger NewNftTemplateAttachedTokens { get; set; }
 
     }
 

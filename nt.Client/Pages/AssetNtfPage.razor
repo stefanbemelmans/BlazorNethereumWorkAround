@@ -32,11 +32,14 @@
     <div id="YourAddress" class="text-left m-2 p-3">
         @Address
     </div>
-    <button type="button" class="btn btn-primary" @onclick="@GetAddress">
+    <button type="button" class="btn btn-primary" @onclick=@GetAddress>
         GetAddress
     </button>
-    <button type="button" class="btn btn-primary" @onclick="@GetTotalNftTypes">
+    <button type="button" class="btn btn-primary" @onclick=@GetTotalNftTypes>
         Get Total Nft types, hopefully
+    </button>
+    <button type="button" class="btn btn-primary" @onclick=@GetNftByType>
+        Get Nft by type, hopefully
     </button>
 
 </div>
@@ -71,11 +74,11 @@ private async void GetAddress()
 public async Task GetTotalNftTypes()
 {
     Console.WriteLine("GetTotalNFTTypes function is hit.");
-    var web3 = new Web3(RopstenWeb3.RopstenEndpoint);
+    var web3 = new Web3(RopstenWeb3.RinkebyEndpoint);
 
     Console.WriteLine(web3);
 
-    Contract NftCreatorContract = web3.Eth.GetContract(NftCreator.Abi, NftCreator.NftCreatorRopstenAddress);
+    Contract NftCreatorContract = web3.Eth.GetContract(NftCreator.Abi, NftCreator.NftCreatorRinkebyAddress);
 
     Console.WriteLine(NftCreatorContract.Address);
 
@@ -88,9 +91,28 @@ public async Task GetTotalNftTypes()
     Console.WriteLine($"{TotalNfts}, tots");
 
 
-
 }
 
+public async Task GetNftByType()
+{
+    Console.WriteLine("GetNFT by Type function is hit.");
+    var web3 = new Web3(RopstenWeb3.RinkebyEndpoint);
 
+    Console.WriteLine(web3);
+
+    Contract NftCreatorContract = web3.Eth.GetContract(NftCreator.Abi, NftCreator.NftCreatorRinkebyAddress);
+
+    Console.WriteLine(NftCreatorContract.Address);
+
+    var GetNftDataFunction = NftCreatorContract.GetFunction("getNFTData");
+
+    Console.WriteLine(GetNftDataFunction);
+
+    var result = await GetNftDataFunction.CallDeserializingToObjectAsync<GetNftByIdFunctionOutputDTO>(TotalNfts);
+
+    Console.WriteLine($"TokenName: {result.TokenName}, TokenSymbol: {result.TokenSymbol}, TokenMintLimit: {result.TokenMintLimit}, Token AttachedTokens: {result.TokenAttachedTokens} NFTData?");
+    }
+
+}
 
 }
