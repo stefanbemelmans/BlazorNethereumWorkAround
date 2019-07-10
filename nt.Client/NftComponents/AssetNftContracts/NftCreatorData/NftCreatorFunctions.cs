@@ -16,21 +16,21 @@ namespace nt.Client.NftComponents.Contracts
 
     }
 
-    [FunctionOutput]
+    [FunctionOutput] // This Works
     public class GetTotalNftTypesFunctionOutputDTO : IFunctionOutputDTO
     {
         [Parameter("uint", "totalNFTs", 1)]
         public int TotalNftTypes { get; set; }
     }
 
-    [Function("getNFTData")]
+    [Function("getNFTData")] // This works
     public class GetNftByIdFunction : FunctionMessage
     {
         [Parameter("uint", "id", 1)]
         public int NftId { get; set; }
     }
 
-    [FunctionOutput]
+    [FunctionOutput]  // This works
     public class GetNftByIdFunctionOutputDTO : IFunctionOutputDTO
     {
         [Parameter("string", "tokentype.name", 1)]
@@ -48,19 +48,21 @@ namespace nt.Client.NftComponents.Contracts
     }
 
     // Create a new NFT Template 
-    [Function("AddNFTTemplates")]
+    // may be called "AddNFTTemplates"
+
+    [Function("NFTTemplates")]
     public class AddNewNftTemplateFunction : FunctionMessage
     {
-        [Parameter("string", "_name", 1)]
+        [Parameter("string", "name", 1)]
         public string NewNftTemplateName { get; set; }
 
-        [Parameter("string", "_symbol", 2)]
+        [Parameter("string", "symbol", 2)]
         public string NewNftTemplateSymbol { get; set; }
 
-        [Parameter("uint", "_mintlimit", 3)]
+        [Parameter("uint", "mintlimit", 3)]
         public BigInteger NewNftTemplateMintLimit { get; set; }
 
-        [Parameter("uint", "_attachedtokens", 4)]
+        [Parameter("uint", "attachedTokens", 4)]
 
         public BigInteger NewNftTemplateAttachedTokens { get; set; }
 
@@ -71,7 +73,7 @@ namespace nt.Client.NftComponents.Contracts
     // Triggers Herc1155 Transfer Single Event
     public class MintNftFunction : FunctionMessage 
     {
-        [Parameter("uint", "_type", 1)]
+        [Parameter("uint", "type", 1)]
         public int Type { get; set; }
 
         [Parameter("string", "data", 2)]

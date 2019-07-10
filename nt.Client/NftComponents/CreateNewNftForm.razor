@@ -1,6 +1,7 @@
 ﻿@using nt.Client.NftComponents;
 @using nt.Client.NftComponents.Contracts;
 @using Nethereum.Web3;
+
 @using Nethereum.Web3.Accounts;
 @using Nethereum.Contracts;
 @using Nethereum.Util;
@@ -30,68 +31,85 @@
 
 @code {
 
-    string NewNftTemplateName { get; set; }
+string NewNftTemplateName { get; set; }
 
-    string NewNftTemplateSymbol { get; set; }
+string NewNftTemplateSymbol { get; set; }
 
-    int NewNftTemplateMintLimit { get; set; }
+int NewNftTemplateMintLimit { get; set; }
 
-    int NewNftTemplateAttachedTokens { get; set; }
+int NewNftTemplateAttachedTokens { get; set; }
 
-    private async Task AddNewNft()
+
+public async Task AddNewNft()
+{
+    Console.WriteLine("trying to add NFT template");
+    Console.WriteLine($"templateName: {NewNftTemplateName}, NewTempSym: {NewNftTemplateSymbol}, MintLimit: {NewNftTemplateMintLimit}, tokensAttached: {NewNftTemplateAttachedTokens}");
+
+    var url = RopstenWeb3.RinkebyEndpoint;
+    var NftCreatorAddress = NftCreator.NftCreatorRinkebyAddress;
+    Console.WriteLine(NftCreatorAddress);
+
+    var privateKey = RopstenWeb3.TestRopstenPrivateKey;
+    var account = new Account(privateKey);
+    var web3 = new Web3(account, url);
+
+    var testFromAddress = RopstenWeb3.TestRopstenAccountAddress;
+    var Gas = Web3.Convert.ToWei(5);
+    Console.WriteLine($"Gas: {Gas}");
+
+
+
+    Contract NftCreatorContract = web3.Eth.GetContract(NftCreator.Abi, NftCreatorAddress);
+
+    var AddNewNftFunction = NftCreatorContract.GetFunction("NFTTemplates");
+
+    var AddNewTemplateHandler = web3.Eth.GetContractTransactionHandler<AddNewNftTemplateFunction>();
+
+    var NewTemplateFunctionMessage = new AddNewNftTemplateFunction
+    {  //this has data
+
+        NewNftTemplateName = NewNftTemplateName,
+        NewNftTemplateSymbol = NewNftTemplateSymbol,
+        NewNftTemplateMintLimit = NewNftTemplateMintLimit,
+        NewNftTemplateAttachedTokens = NewNftTemplateAttachedTokens
+
+    };
+    object[] functionInputs = { NewNftTemplateName, NewNftTemplateSymbol, NewNftTemplateMintLimit, NewNftTemplateAttachedTokens };
+
+    foreach(var obj in functionInputs)
     {
-        Console.WriteLine("trying to add NFT template");
-
-        var url = RopstenWeb3.RinkebyEndpoint;
-        var NftCreatorAddress = NftCreator.NftCreatorRinkebyAddress;
-        Console.WriteLine(NftCreatorAddress);
-
-        var privateKey = RopstenWeb3.TestRopstenPrivateKey;
-        var account = new Account(privateKey);
-        var web3 = new Web3(account, url);
-
-
-        Contract NftCreatorContract = web3.Eth.GetContract(NftCreator.Abi, NftCreator.NftCreatorRinkebyAddress);
-
-        var AddNewNftFunction = NftCreatorContract.GetFunction("AddNFTTemplate");
-
-        var AddNewTemplateHandler = web3.Eth.GetContractTransactionHandler<AddNewNftTemplateFunction>();
-
-        var NewTemplateFunctionMessage = new AddNewNftTemplateFunction()
-        {
-            NewNftTemplateName = NewNftTemplateName,
-            NewNftTemplateSymbol = NewNftTemplateSymbol,
-            NewNftTemplateMintLimit = NewNftTemplateMintLimit,
-            NewNftTemplateAttachedTokens = NewNftTemplateAttachedTokens
-
-        };
-
-        //var NewTemplateInputData = AddNewNftFunction.GetData(NewTemplateFunctionMessage);
-
-        //var NewFunctionInputWithGas = AddNewTemplateHandler.CreateTransactionInputEstimatingGasAsync(NftCreatorAddress, NewTemplateFunctionMessage);
-
-        //Console.WriteLine(NewFunctionInputWithGas.ToString());
-
-        //var GasEst = await AddNewTemplateHandler.EstimateGasAsync(NftCreatorAddress, NewTemplateInputData);
-        //Console.WriteLine($"{GasEst.Value}, something??? should be gas numbers");
-
-        NewTemplateFunctionMessage.Gas = new HexBigInteger(900000);
-
-        var transactionReceipt = await AddNewTemplateHandler.SendRequestAndWaitForReceiptAsync(NftCreator.NftCreatorRinkebyAddress, NewTemplateFunctionMessage);
-
-
-        Console.WriteLine($"{transactionReceipt.TransactionHash}, something??? should be tx reciept");
-
-        //var OtherEst = await AddNewTemplateHandler.CreateTransactionInputEstimatingGasAsync(NftCreatorAddress, NewTemplateFunctionMessage);
-
-        //Console.WriteLine($"{OtherEst.Value}, something??? should be something?");
-
-        //{ this.NewNftTemplateName, this.NewNftTemplateSymbol, this.NewNftTemplateMintLimit, this.NewNftTemplateAttachedTokens };
-        //var result = await AddNewNftFunction.SendTransactionAsync(RopstenWeb3.TestRopstenAccountAddress, this.NewNftTemplateName);
-
-
-        //var estimate = await AddNewTemplateHandler.EstimateGasAsync<BigNumber>(NftCreatorAddress, NewTemplateFunctionMessage);
-
+        Console.WriteLine($"function input value {obj}");
     }
+
+    //var NewTemplateInputData = AddNewNftFunction.GetData(NewTemplateFunctionMessage);
+
+    //var NewFunctionInputWithGas = AddNewTemplateHandler.CreateTransactionInputEstimatingGasAsync(NftCreatorAddress, NewTemplateFunctionMessage);
+
+    //Console.WriteLine(NewFunctionInputWithGas.ToString());
+
+    //var GasEst = await AddNewTemplateHandler.EstimateGasAsync(NftCreatorAddress, NewTemplateFunctionMessage);
+    //Console.WriteLine($"{GasEst.Value}, something??? should be gas numbers");
+
+    //NewTemplateFunctionMessage.Gas = new HexBigInteger(900000);
+
+    //var transactionReceipt = await AddNewTemplateHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddress, NewTemplateFunctionMessage);
+
+    //Console.WriteLine($"{transactionReceipt.TransactionHash}");
+    var transactionReceipt = await AddNewNftFunction.SendTransactionAsync(testFromAddress, Gas, null, functionInputs);
+    Console.WriteLine($"{transactionReceipt}, something??? should be tx reciept");
+
+
+
+    //var OtherEst = await AddNewTemplateHandler.CreateTransactionInputEstimatingGasAsync(NftCreatorAddress, NewTemplateFunctionMessage);
+
+    //Console.WriteLine($"{OtherEst.Value}, something??? should be something?");
+
+    //{ this.NewNftTemplateName, this.NewNftTemplateSymbol, this.NewNftTemplateMintLimit, this.NewNftTemplateAttachedTokens };
+    //var result = await AddNewNftFunction.SendTransactionAsync(RopstenWeb3.TestRopstenAccountAddress, this.NewNftTemplateName);
+
+
+    //var estimate = await AddNewTemplateHandler.EstimateGasAsync<BigNumber>(NftCreatorAddress, NewTemplateFunctionMessage);
+
+}
 
 }
