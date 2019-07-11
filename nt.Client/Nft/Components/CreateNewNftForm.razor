@@ -90,13 +90,13 @@ public async Task AddNewNft()
     //var GasEst = await AddNewTemplateHandler.EstimateGasAsync(NftCreatorAddress, NewTemplateFunctionMessage);
     //Console.WriteLine($"{GasEst.Value}, something??? should be gas numbers");
 
-    //NewTemplateFunctionMessage.Gas = new HexBigInteger(900000);
+    NewTemplateFunctionMessage.Gas = new HexBigInteger(900000);
 
-    //var transactionReceipt = await AddNewTemplateHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddress, NewTemplateFunctionMessage);
+    var transactionReceipt = await AddNewTemplateHandler.SendRequestAndWaitForReceiptAsync(NftCreatorAddress, NewTemplateFunctionMessage);
 
-    //Console.WriteLine($"{transactionReceipt.TransactionHash}");
-    var transactionReceipt = await AddNewNftFunction.SendTransactionAsync(testFromAddress, Gas, null, functionInputs);
-    Console.WriteLine($"{transactionReceipt}, something??? should be tx reciept");
+    Console.WriteLine($"{transactionReceipt.TransactionHash}");
+    //var transactionReceipt = await AddNewNftFunction.SendTransactionAsync(testFromAddress, Gas, null, functionInputs);
+    //Console.WriteLine($"{transactionReceipt}, something??? should be tx reciept");
 
 
 

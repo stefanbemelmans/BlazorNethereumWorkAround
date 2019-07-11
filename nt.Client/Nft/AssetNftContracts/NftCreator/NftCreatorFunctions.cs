@@ -48,9 +48,8 @@ namespace nt.Client.NftComponents.Contracts
     }
 
     // Create a new NFT Template 
-    // may be called "AddNFTTemplates"
-
-    [Function("NFTTemplates")]
+    // This Works
+    [Function("AddNFTTemplate")]
     public class AddNewNftTemplateFunction : FunctionMessage
     {
         [Parameter("string", "name", 1)]
