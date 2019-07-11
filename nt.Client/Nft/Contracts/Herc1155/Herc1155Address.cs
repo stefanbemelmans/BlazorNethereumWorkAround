@@ -1,4 +1,4 @@
-﻿namespace nt.Client.NftComponents.Contracts
+﻿namespace nt.Client.Nft.Contracts
 {
     public class Herc1155ContractData
     {

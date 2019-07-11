@@ -1,13 +1,9 @@
-﻿using Nethereum.ABI.FunctionEncoding.Attributes;
-using Nethereum.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Threading.Tasks;
-
-namespace nt.Client.NftComponents.Contracts
+﻿namespace nt.Client.Nft.Contracts
 {   // [Function("name", "return type")]
+    using Nethereum.ABI.FunctionEncoding.Attributes;
+    using Nethereum.Contracts;
+    using System.Numerics;
+
     // [Parameter("type", "paramName", order)]
 
     [Function ("totalNFTs", "uint")]

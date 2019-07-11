@@ -1,4 +1,4 @@
-﻿namespace nt.Client.NftComponents
+﻿namespace nt.Client.Nft.Contracts
 {
     public static class RopstenWeb3
     {
