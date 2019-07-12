@@ -1,4 +1,4 @@
-﻿namespace nt.Client.Nft.Contracts
+﻿namespace nt.Client.Server.Services.Web3.Contracts
 {   // [Function("name", "return type")]
     using Nethereum.ABI.FunctionEncoding.Attributes;
     using Nethereum.Contracts;

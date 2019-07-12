@@ -6,7 +6,7 @@
     // [Parameter("type", "param_name", order num, true/false is Indexed?)]
 
     [Event("TransferSingle")]
-    public class TransferEventDTO : IEventDTO
+    public class TransferEventDto : IEventDTO
     {
         [Parameter("address", "_operater", 1, true)]
         public string Operator { get; set; }
