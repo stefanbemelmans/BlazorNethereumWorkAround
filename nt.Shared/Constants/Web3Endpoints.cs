@@ -1,6 +1,10 @@
-﻿namespace nt.Client.Nft.Contracts
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace nt.Shared.Constants
 {
-    public static class RopstenWeb3
+    public static class Web3Endpoints
     {
         public static string RopstenEndpoint = "https://ropsten.infura.io/v3/92ffd0e0fb6e484198387a5fabf31954";
 
