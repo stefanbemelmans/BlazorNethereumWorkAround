@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Nft\Components\NftTemplateComponentModel.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Nft\Components\NftTemplateComponentModel.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Assets\certificate.png" />
     <None Include="wwwroot\Assets\herc.png" />
   </ItemGroup>
