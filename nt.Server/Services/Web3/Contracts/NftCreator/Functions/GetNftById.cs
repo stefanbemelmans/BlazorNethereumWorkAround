@@ -1,4 +1,4 @@
-﻿namespace nt.Client.Server.Services.Web3.Contracts
+﻿namespace nt.Client.Server.Services.WebThree.Contracts
 {   // [Function("name", "return type")]
     using Nethereum.ABI.FunctionEncoding.Attributes;
     using Nethereum.Contracts;

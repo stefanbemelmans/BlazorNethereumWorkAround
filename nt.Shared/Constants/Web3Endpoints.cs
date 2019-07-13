@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace nt.Shared.Constants
+namespace nt.Shared.Constants.WebThree
 {
     public static class Web3Endpoints
     {

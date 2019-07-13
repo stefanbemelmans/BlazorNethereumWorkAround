@@ -1,4 +1,4 @@
-﻿namespace nt.Client.Nft.Contracts
+﻿namespace nt.Server.Services.WebThree.Contracts
 {   // [Event("event name")]
     using Nethereum.ABI.FunctionEncoding.Attributes;
     using System.Numerics;
