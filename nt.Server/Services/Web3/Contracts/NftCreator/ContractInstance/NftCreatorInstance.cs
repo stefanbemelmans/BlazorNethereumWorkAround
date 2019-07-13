@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Nethereum.RPC;
 using Newtonsoft.Json;
 using nt.Shared.Constants;
+using nt.Server.Services.WebThree.Instance;
+
 namespace nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance
 {
     public class NftCreatorInstance

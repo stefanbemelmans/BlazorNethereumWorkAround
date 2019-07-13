@@ -8,7 +8,7 @@ namespace nt.Server.Services.WebThree.Instance
     {
         public Web3Instance()
         {
-            Web3 web3WithPrivateKey = new Web3(TestFromAccount.EthFromAccount, Web3Endpoints.RinkebyEndpoint);
+            _ = new Web3(TestFromAccount.EthFromAccount, Web3Endpoints.RinkebyEndpoint);
         }
 
     }

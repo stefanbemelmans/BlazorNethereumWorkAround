@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using System.Linq;
+using nt.Server.Services.WebThree.Instance;
 
 namespace nt.Server
 {
@@ -20,6 +21,7 @@ namespace nt.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                     new[] { "application/octet-stream" });
             });
+            services.AddSingleton<Web3Instance>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
