@@ -3,11 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Serialization;
 using System.Linq;
-using nt.Server.Services.WebThree.Instance;
 using nt.Shared.Constants.AccountAddresses;
-using Nethereum.Web3.Accounts;
 using nt.Shared.Constants.WebThree;
 using Nethereum.Web3;
 

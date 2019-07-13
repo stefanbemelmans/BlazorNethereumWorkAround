@@ -1,9 +1,6 @@
 ﻿@page "/AssetNft"
 @layout AssetNftLayout;
 @using nt.Client.Nft.Components;
-@using nt.Client.Nft.Contracts;
-@using Nethereum.Web3;
-@using Nethereum.Contracts;
 @inject IJSRuntime JsRuntime;
 @*<NavLink class="nav-link" href="/">
         <span class="oi oi-home" aria-hidden="true"></span>Home
@@ -32,16 +29,16 @@
     <div id="YourAddress" class="text-left m-2 p-3">
         @Address
     </div>
-    <button type="button" class="btn btn-primary" @onclick=@GetAddress>
+    <button type="button" class="btn btn-primary">
         GetAddress
     </button>
-    <button type="button" class="btn btn-primary" @onclick=@GetTotalNftTypes>
+    <button type="button" class="btn btn-primary">
         Get Total Nft types, hopefully
     </button>
 
     <input id="GetNftTypeInput" @bind="NftType" />
    
-    <button type="button" class="btn btn-primary" @onclick=@GetNftByType>
+    <button type="button" class="btn btn-primary">
         Get Nft by type, hopefully
     </button>
 
@@ -67,7 +64,7 @@ int NftType;
 int TotalNfts;
 
 NftTemplate NftTemplate = new NftTemplate();
-private async void GetAddress()
+@*private async void GetAddress()
 {
     Address = await JsRuntime.InvokeAsync<string>("getAddress");
 
@@ -120,7 +117,7 @@ public async Task GetNftByType()
     NftTemplate.AttachedTokens = result.TokenAttachedTokens;
     }
 
-    }
+    }*@
 
 }
 
