@@ -14,14 +14,14 @@ namespace nt.Server.Services.WebThree.Contracts.NftCreator.ContractInstance
 {
     public class NftCreatorInstance
     {
-        public NftCreatorInstance()
+        public NftCreatorInstance(Web3Instance aWeb3Instance)
         {
-            Contract NftCreatorContractInstance = Web3Instance._.Eth. 
+            Web3Instance = aWeb3Instance;
+            Contract NftCreatorContractInstance = Web3Instance.Web3Instantiated.Eth.GetContract(NftCreatorAbi, NftCreatorAddresses.NftCreatorRinkebyAddress); 
 
         }
-       static string NftCreatorAbi = reader.ReadToEnd();
-       static readonly StreamReader reader = File.OpenText(@"C:\mv\nt\nt.Shared\Constants\ContractConstants\NftCreator\Abi.json;");
-        [Inject]
+        string NftCreatorAbi = File.ReadAllText(@"C:\mv\nt\nt.Shared\Constants\ContractConstants\NftCreator\Abi.json;");
+       
         Web3Instance Web3Instance { get; set; }
     }
 

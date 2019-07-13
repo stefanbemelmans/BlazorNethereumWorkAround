@@ -8,8 +8,10 @@ namespace nt.Server.Services.WebThree.Instance
     {
         public Web3Instance()
         {
-            _ = new Web3(TestFromAccount.EthFromAccount, Web3Endpoints.RinkebyEndpoint);
+           Web3 Web3Instantiated = new Web3(TestFromAccount.EthFromAccount, Web3Endpoints.RinkebyEndpoint);
         }
+
+       public Web3 Web3Instantiated { get; set; }
 
     }
 }
